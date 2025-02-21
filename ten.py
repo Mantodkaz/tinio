@@ -27,7 +27,7 @@ async def read_file_async(file_path):
         return {}
 
 async def get_access_token():
-    data = await read_file_async('heked.json')
+    data = await read_file_async('token.json')
     return data.get('accessToken')
 
 async def connect_websocket(access_token):
@@ -68,7 +68,7 @@ async def main():
                 print("Using stored access token.")
                 await connect_websocket(access_token)
             else:
-                print("No access token found. Please add a valid token in 'heked.json'.")
+                print("No access token found. Please add a valid token in 'token.json'.")
                 break
         except (KeyboardInterrupt, SystemExit):
             print("Stopped by user.")
